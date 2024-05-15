@@ -58,20 +58,18 @@ Socket programming finds applications in various domains, including web developm
 ## Client:
 ```
 import socket
+from datetime import datetime
 s=socket.socket()
 s.bind(('localhost',8000))
 s.listen(5)
 c,addr=s.accept()
-while True:
-	i=input("Enter a data: ")
-	c.send(i.encode())
-	ack=c.recv(1024).decode()
-		if ack:
-			print(ack)
-			continue
-		else:
-			c.close()
-			break
+print("Client Address: ",addr)
+now = datetime.now()
+c.send(now.strftime("Date: %d / %m / %Y and Time: %H : %M : %S").encode())
+ack = c.recv(1024).decode()
+if ack:
+    print(ack)
+c.close()
 ```
 
 ## Server:
@@ -79,16 +77,17 @@ while True:
 import socket
 s=socket.socket()
 s.connect(('localhost',8000))
-while True:
-	print(s.recv(1024).decode())
-	s.send("Acknowledgement Recived".encode())
+print(s.getsockname())
+print(s.recv(1024).decode())
+s.send("Acknowledgement received from the server.".encode())
 ```
 
 ## Output:
 ## Client:
-![image](https://github.com/MANIKUMARDK/SocketStudy/assets/147215581/fe054b82-5176-43bb-817f-1e83b4b63eb4)
+![image](https://github.com/MANIKUMARDK/SocketStudy/assets/147215581/829acf7c-6019-4cf8-9541-0eabf75ad1ec)
+
 ## Server:
-![image](https://github.com/MANIKUMARDK/SocketStudy/assets/147215581/f640e4f6-3e99-4cc0-a225-e584ea7eb228)
+![image](https://github.com/MANIKUMARDK/SocketStudy/assets/147215581/96b33a98-1c2d-49ab-9da0-e012e0e8386a)
 
 
 ## Result:
