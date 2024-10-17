@@ -1,6 +1,6 @@
 # Ex.No:1a  			Study of Socket Programming
-## REG NO:212223230121
-## NAME:MANIKUMAR.DK
+## NAME:M THEJESWARAN
+## REG NO:212223240168
 ## Aim: 
 To perform a study on Socket Programming
 ## Introduction:
